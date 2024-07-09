@@ -28,5 +28,26 @@ Lifecycle method annotation :
 4. @AfterAll - Method is executed only once, after all test methods(useful for releasing database connection, disconnecibg from servers)
 5. NOte- @BeforeAll and @AfterALl method are by defoult static 
 
+@DisplayName  :- Custom display name with spaces, special caharcters and emojis. useful for test report in IDE or external test runner
+Junit can generate dispaly names for you
+Simple -- Remove trailling parenthesis from the test method name.
+ReplaceUnderscores  -- Replaces underscoe in test method name with spaces.
+IndicativeSentences -- generate senetence based on test class name and test method name.
+how to write ---   @DisplayNameGeneration(DisplayNameGenerator.Simple.class)   --define at the top top of the class
+
+
+
+assertSame = Assert that items refer to same object
+assertNotSame = assert that items do not refer to same object
+
+Test for true or false
+assertTrue  = assert that condition is true;
+assertFalse= assert that condition is false
+
+
+assertIterableEquals  -- assert that both object iterables are deeply equal
+assertLinesMatch  -- assert that both lists of string match
+
+
 
 

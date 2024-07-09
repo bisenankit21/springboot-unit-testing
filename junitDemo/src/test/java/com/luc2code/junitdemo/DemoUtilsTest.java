@@ -3,15 +3,82 @@ package com.luc2code.junitdemo;
 import com.luv2code.junitdemo.DemoUtils;
 import org.junit.jupiter.api.*;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+//@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 
 class DemoUtilsTest {
     DemoUtils demoUtils;
     @BeforeEach
     void setBeforeEach(){
         demoUtils=new DemoUtils();
-        System.out.println("@BeforeEac executes before the execution of of each method");
+      //  System.out.println("@BeforeEac executes before the execution of of each method");
     }
+
+
+
+    @Test
+   @DisplayName("Equals and Not Equals")
+    void testEqualsAndNotEquals(){
+      //  System.out.println("Running test: testEqualsAndNotEquals");
+
+        assertEquals(6,demoUtils.add(2,4),"2+4 must be equals to ");
+        assertNotEquals(6,demoUtils.add(1,9),"1+9 must noy be 6");
+
+    }
+    @Test
+    @DisplayName("Nulll and Not Null")
+    void testNullAndNotNull(){
+       // System.out.println("Running test: testNullAndNotNull");
+
+        String str1=null;
+        String str2="Ankit";
+        assertNull(demoUtils.checkNull(str1),"Object should be null");
+        assertNotNull(demoUtils.checkNull(str2),"Object shuld not be Null");
+    }
+
+    @Test
+    @DisplayName("Same and Not Same")
+    void testSameAndNotSame(){
+        String str = "luv2code";
+        assertSame(demoUtils.getAcademy(),demoUtils.getAcademyDuplicate(),"Object should refer to same object");
+        assertNotSame(str,demoUtils.getAcademy(), "Object shold not refere to the same object");
+
+    }
+
+    @Test
+    @DisplayName("true or false")
+    void testtrueOrFalse(){
+        assertTrue(demoUtils.isGreater(3,1),"Fisrt number is greater than seceond number");
+        assertFalse(demoUtils.isGreater(2,4),"First number is less than econd number");
+    }
+
+    @Test
+    @DisplayName("Array Equals")
+    void testArrayEquals(){
+        String[] stringArray = {"A", "B", "C"};
+        assertArrayEquals(stringArray,demoUtils.getFirstThreeLettersOfAlphabet(),"Array should be euqals");
+    }
+
+
+    @Test
+    @DisplayName("List Equals")
+    void testListEquals(){
+        List<String> list= List.of("luv","2","code");
+        assertIterableEquals(list,demoUtils.getAcademyInList(),"List should be euqla");
+    }
+
+    @Test
+    @DisplayName("test lines match")
+    void  testLineMatch(){
+        List<String> list= List.of("luv","2","code");
+        assertIterableEquals(list,demoUtils.getAcademyInList(),"Lines should be match");
+
+    }
+
+/*
 
     @AfterEach
     void tearDownAfterEach(){
@@ -26,22 +93,5 @@ class DemoUtilsTest {
     static void setUpAftereachClass(){
         System.out.println("@AfterAll executes only once after  all test emthod in the class");
     }
-
-    @Test
-    void testEqualsAndNotEquals(){
-        System.out.println("Running test: testEqualsAndNotEquals");
-
-        assertEquals(6,demoUtils.add(2,4),"2+4 must be equals to ");
-        assertNotEquals(6,demoUtils.add(1,9),"1+9 must noy be 6");
-
-    }
-    @Test
-    void testNullAndNotNull(){
-        System.out.println("Running test: testNullAndNotNull");
-
-        String str1=null;
-        String str2="Ankit";
-        assertNull(demoUtils.checkNull(str1),"Object should be null");
-        assertNotNull(demoUtils.checkNull(str2),"Object shuld not be Null");
-    }
+ */
 }

@@ -3,12 +3,15 @@ package com.luc2code.junitdemo;
 import com.luv2code.junitdemo.DemoUtils;
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 
+//@TestMethodOrder(MethodOrderer.DisplayName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DemoUtilsTest {
     DemoUtils demoUtils;
     @BeforeEach
@@ -20,6 +23,7 @@ class DemoUtilsTest {
 
 
     @Test
+    @Order(0)
    @DisplayName("Equals and Not Equals")
     void testEqualsAndNotEquals(){
       //  System.out.println("Running test: testEqualsAndNotEquals");
@@ -29,6 +33,7 @@ class DemoUtilsTest {
 
     }
     @Test
+    @Order(2)
     @DisplayName("Nulll and Not Null")
     void testNullAndNotNull(){
        // System.out.println("Running test: testNullAndNotNull");
@@ -75,6 +80,20 @@ class DemoUtilsTest {
     void  testLineMatch(){
         List<String> list= List.of("luv","2","code");
         assertIterableEquals(list,demoUtils.getAcademyInList(),"Lines should be match");
+
+    }
+    @Test
+    @DisplayName("Throws and Does not Throw")
+    void testThrowAndDoesNotThrow(){
+        assertThrows(Exception.class,()->{demoUtils.throwException(-1);},"Should throw an exception");
+        assertDoesNotThrow(()->{demoUtils.throwException(2);},"Should not throw an exception");
+    }
+
+    @Test
+    @Order(30)
+    @DisplayName("Timeout")
+    void testTimeout(){
+        assertTimeoutPreemptively(Duration.ofSeconds(3),()->{demoUtils.checkTimeout();},"Method should execute in 3 second");
 
     }
 

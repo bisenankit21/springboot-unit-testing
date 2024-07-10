@@ -48,6 +48,19 @@ assertFalse= assert that condition is false
 assertIterableEquals  -- assert that both object iterables are deeply equal
 assertLinesMatch  -- assert that both lists of string match
 
+assertThrows(Exception.class , ()->{object.function_call()};,"Should throw an exception");
+assertDoesNotThrow(()->{object.function_call()}, should not throw an exception)
+
+assertTimeoutPreemptively -- assert tha an executable completes before given timeout is exceeded
+
+@TestMethodOrder - Configure the order/ sort algorithm for the test methods
+Specify method order - 
+    1. MethodOrderer.DisplayName  - Sort test method alphanumerically based on display names
+     2. MethodOrderer.MethodName  - Sort test method alphanumerically based on method names
+3. MethodOrderer.Random   - Pseudo random order based on @method name
+4. MethodOrderer.OrderAnnotation  - Sort test method numerically based on order annoation
 
 
-
+@Order   -- Mannually specify the order with an int number
+            --order with lowest number has highest priority
+            --Negative numbers are allowed

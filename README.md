@@ -64,3 +64,14 @@ Specify method order -
 @Order   -- Mannually specify the order with an int number
             --order with lowest number has highest priority
             --Negative numbers are allowed
+
+@Disabled   -- Disable a test method
+@EnableOnOs   --Enable test when running on a given operating system.
+@EnebaledOnJre- Enable on specific Java version range 
+@ParameterizedTest  -  Junit will run the test multiple times and supply the data. Junit  does the looping for you.
+values  :- 1. @ValueSource - Arrays of values : Sting. ints, doubles, floats ets
+           2. @CsvSource - Array of CSV String Values
+           3. @CsvFileSource  :-  CSV values reads from a file
+           4. @EnumSource :- Enum Constant Values
+           5. @MethodSource  :-  Custom method for providing values
+

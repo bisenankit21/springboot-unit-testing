@@ -2,7 +2,9 @@ package com.luc2code.junitdemo;
 
 import com.luv2code.junitdemo.DemoUtils;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.*;
 
+import java.lang.management.MonitorInfo;
 import java.time.Duration;
 import java.util.List;
 
@@ -25,6 +27,7 @@ class DemoUtilsTest {
     @Test
     @Order(0)
    @DisplayName("Equals and Not Equals")
+    @Disabled("Dpnt run it")
     void testEqualsAndNotEquals(){
       //  System.out.println("Running test: testEqualsAndNotEquals");
 
@@ -35,6 +38,7 @@ class DemoUtilsTest {
     @Test
     @Order(2)
     @DisplayName("Nulll and Not Null")
+    @EnabledOnOs(OS.MAC)
     void testNullAndNotNull(){
        // System.out.println("Running test: testNullAndNotNull");
 
@@ -46,6 +50,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Same and Not Same")
+    @EnabledOnJre(JRE.JAVA_12)
     void testSameAndNotSame(){
         String str = "luv2code";
         assertSame(demoUtils.getAcademy(),demoUtils.getAcademyDuplicate(),"Object should refer to same object");
@@ -55,6 +60,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("true or false")
+    @EnabledForJreRange(min = JRE.JAVA_12,max = JRE.JAVA_22)
     void testtrueOrFalse(){
         assertTrue(demoUtils.isGreater(3,1),"Fisrt number is greater than seceond number");
         assertFalse(demoUtils.isGreater(2,4),"First number is less than econd number");
@@ -81,6 +87,11 @@ class DemoUtilsTest {
         List<String> list= List.of("luv","2","code");
         assertIterableEquals(list,demoUtils.getAcademyInList(),"Lines should be match");
 
+    }
+    @Test
+    @DisplayName("Multiply")
+    void testMultiply(){
+        assertEquals(12,demoUtils.multiply(4,3),"4*3 must be 12");
     }
     @Test
     @DisplayName("Throws and Does not Throw")
